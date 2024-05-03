@@ -25,7 +25,7 @@ class Planets(Base):
     name = Column(String(250))
     climate = Column(String(250))
     gravity = Column(String(250), nullable=False)
-    Planets = relationship(User)
+    favPlanets = relationship(User)
 
 class Characters(Base):
     __tablename__ = 'Characters'
@@ -33,7 +33,21 @@ class Characters(Base):
     name = Column(String(250))
     movies = Column(String(50))
     mass = Column(Integer)
-    Characters = relationship(User)
+    
+
+class favCharacters(Base):
+    __tablename__ = 'favCharacters'
+    id = Column(Integer, primary_key=True)
+    favCharacters = relationship(User)
+    favCharacters = relationship(Characters)
+
+class favPlanets(Base):
+    __tablename__ = 'favPlanets'
+    id = Column(Integer, primary_key=True)
+    favPlanets = relationship(User)
+    favPlanets = relationship(Planets)
+    
+
 
     def to_dict(self):
         return {}
